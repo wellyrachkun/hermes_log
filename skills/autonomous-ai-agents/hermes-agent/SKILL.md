@@ -644,6 +644,124 @@ To change the workspace port from the default 3000, see `references/hermes-works
 2. `hermes skills config` — check platform enablement
 3. Load explicitly: `/skill name` or `hermes -s name`
 
+---
+
+## Disaster Recovery & Backup
+
+Back up Hermes state to a private GitHub repo for VPS migration and disaster recovery. Secrets are stored in environment variables, not `config.yaml`, so the config is safe to back up.
+
+### What to Back Up
+
+These directories are **critical** for DR — losing them means losing your agent's memory, skills, and configuration:
+
+| Path | Value | Size |
+|------|-------|------|
+| `memories/` | User profile + agent memory | ~12 KB |
+| `cron/` | Cron job definitions | ~12 KB |
+| `skills/` | Custom & installed skills | ~14 MB |
+| `kanban/` | Project boards & workspaces | ~400 KB |
+| `gateway/` | Platform connection state | ~8 KB |
+| `platforms/` | Platform config | ~8 KB |
+| `plugins/` | Plugin state | ~400 KB |
+| `config.yaml` | Agent config (no secrets) | ~8 KB |
+
+These directories are **large and NOT needed** for DR:
+
+| Path | Size | Why Skip |
+|------|------|----------|
+| `sessions/` | ~57 MB | Transcripts, too big |
+| `checkpoints/` | ~357 MB | Filesystem snapshots |
+| `profiles/` | ~238 MB | Profile state/sessions |
+| `state-snapshots/` | ~53 MB | Auto-generated state |
+| `logs/` | ~3 MB | Rotating logs |
+| `bin/` | ~12 MB | Binaries (reinstall) |
+| `trash/` | ~10 MB | Deleted files |
+| `cache/` | ~400 KB | Transient |
+
+**CRITICAL — always exclude `secrets/`**: `~/.hermes/secrets/` contains encrypted local passwords and must NEVER be pushed to any remote repo.
+
+### Automated Nightly Backup
+
+Set up a self-contained backup script and a `no_agent` cron job at 3 AM:
+
+**1. Create the backup repo:**
+```bash
+git clone git@github.com:USER/hermes_log.git ~/.hermes/hermes-log-backup
+```
+
+**2. Use the backup script** (see `references/hermes-backup-script.md`). The script rsyncs critical directories, copies `config.yaml`, and pushes only when there are changes.
+
+**3. Copy script to cron-accessible path:**
+```bash
+cp ~/.hermes/hermes-log-backup/backup.sh ~/.hermes/scripts/hermes-backup.sh
+chmod +x ~/.hermes/scripts/hermes-backup.sh
+```
+
+**4. Create the cron job** via `cronjob` tool:
+- `name`: "Hermes Nightly Backup"
+- `schedule`: `0 3 * * *`
+- `no_agent`: `true`
+- `script`: `hermes-backup.sh`
+
+### Restoring from Backup (New VPS)
+
+```bash
+git clone git@github.com:USER/hermes_log.git /tmp/hermes-restore
+rsync -av /tmp/hermes-restore/ ~/.hermes/
+# Verify:
+ls ~/.hermes/memories/ ~/.hermes/skills/ ~/.hermes/config.yaml
+# Set API keys in environment variables (they're NOT in the backup)
+# Start hermes and verify memory is intact:
+hermes --resume
+```
+
+### Pitfalls
+
+- **`.gitignore` with `*` blocks everything**: Using `*` as the first line of `.gitignore` inside the backup repo ignores ALL files, including ones explicitly added later. Use a whitelist approach instead (`!backup.sh`, `!README.md`) or skip gitignore entirely since the backup script controls what enters the repo.
+- **`config.yaml` has no raw API keys**: Hermes stores API keys in environment variables, not in `config.yaml`. The config file is safe to back up — all `api_key` fields are empty strings (`''`). Verify with `grep api_key ~/.hermes/config.yaml` before pushing.
+- **Cron `no_agent` script path**: Must be relative to `~/.hermes/scripts/`. Absolute paths are rejected. The script itself can use absolute paths internally — only the cron registration needs a relative name.
+
+---
+
+## Maintenance & Weekly Cleanup
+
+Hermes and its ecosystem accumulate temporary files that can consume gigabytes over time. A weekly cleanup cron keeps the VPS lean.
+
+### What to Clean (Safe Targets)
+
+| Target | Typical Size | Why Safe |
+|--------|-------------|----------|
+| `*/.vscode-ai-images/` | ~1-5 MB | VS Code AI screenshot temp |
+| `/root/.cache/camoufox/` | ~1-2 GB | Browser automation profiles |
+| `/tmp/camoufox-*/` | ~0.5-1 GB | Browser runtime temp |
+| `/tmp/kamal-clones/` | ~0.5 GB | Kamal deploy temp clones |
+| `/tmp/ruby-build.*/` | ~0.1-0.5 GB | Ruby build artifacts |
+| `/root/.hermes/trash/` | ~10 MB | Hermes deleted files |
+| `/root/.hermes/logs/*.log.*` | ~3 MB | Rotated log files |
+| `/tmp/node-compile-cache/` (>7 days) | ~70 MB | Stale Node cache |
+
+**Do NOT clean**: `~/.cache/ms-playwright/` (browser binaries needed), `~/.cache/uv/` or `~/.cache/pip/` (re-download penalty), `~/.hermes/sessions/` (persistent context).
+
+### Automated Weekly Cleanup
+
+Use the cleanup script from `references/hermes-cleanup-script.md`:
+
+```bash
+# Copy to scripts directory
+cp <path>/hermes-cleanup-script.md ~/.hermes/scripts/hermes-cleanup.sh
+chmod +x ~/.hermes/scripts/hermes-cleanup.sh
+```
+
+Then create a `no_agent` cron job:
+- **name**: "Weekly Cleanup"
+- **schedule**: `0 4 * * 0` (Sunday 4 AM)
+- **no_agent**: `true`
+- **script**: `hermes-cleanup.sh`
+
+Typical result: frees 2-4 GB on first run, then ~500 MB weekly thereafter.
+
+---
+
 ### Gateway issues
 Check logs first:
 ```bash

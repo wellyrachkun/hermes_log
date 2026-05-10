@@ -1,6 +1,12 @@
 #!/bin/bash
 # Hermes Agent nightly backup for disaster recovery
-# Excludes: secrets, sessions, checkpoints, profiles, logs, cache, bin
+# Saves: memories, cron, skills, kanban, gateway, platforms, plugins, config.yaml
+# Excludes: secrets, sessions, checkpoints, profiles, logs, cache, bin, trash
+#
+# USAGE:
+# 1. Clone this repo: git clone git@github.com:USER/hermes_log.git ~/.hermes/hermes-log-backup
+# 2. Copy to scripts: cp ~/.hermes/hermes-log-backup/backup.sh ~/.hermes/scripts/hermes-backup.sh
+# 3. Create cron job via hermes cronjob tool (no_agent=true, script=hermes-backup.sh, schedule="0 3 * * *")
 
 set -e
 
