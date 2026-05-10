@@ -1,4 +1,6 @@
+# Ignore everything by default
 *
+# Except these
 !.gitignore
 !backup.sh
 !README.md
