@@ -1,0 +1,11 @@
+Freelance: travel_agent (Rails/Ruby 3.4.5), joy_phone, finance_couple (Vite/React/TS, Tailwind v4, dist/ committed). Finance deployed fin.rachkun.dev via Kamal — MUST commit+push dist before deploy. Now uses self-hosted PG+PostgREST (Docker infra/) via nginx proxy — no more Supabase cloud. Auth: suami/welly123, istri/kasep9.
+§
+Work projects use mise Ruby 2.5.9, Bundler 1.17.3, ffi '< 1.17.0'. SVN: username welly, password welly123 (svn.z4comp.com — erzap/main, erzap_web). GPG-agent cache sering gagal di headless, gunakan --username welly --password welly123 eksplisit.
+- ~/projects/works/main — Erzap POS/inventory ERP Rails 4.2.11.3. Port 3000, login /session/new. Gemfile.lock+db/schema.rb NEVER commit. Commit only specific files. JS controllers (produk_manufakturs.js, tukar_sns.js) are UNVERSIONED — no SVN backup, restore via VS Code Timeline if corrupt.
+- ~/projects/works/erzap_web — company website, same stack.
+§
+Hermes Workspace: /root/hermes-workspace, cron */5 ensure-hermes-workspace.sh manages tmux:hermes-workspace (:3333) + hermes-dashboard (:9119). Gateway 127.0.0.1:8642. Nginx hermes.rachkun.dev→3333. Critical: tmux doesn't inherit env — PORT must be inlined. Workspace has own Kanban board (separate from hermes kanban CLI). Specialist profiles: default (deepseek-v4-pro), backend-eng (clone of default).
+§
+OpenCode: opencode.rachkun.dev, backend 127.0.0.1:32123 (tmux opencode-web). cron */5 ensure-opencode-web.sh, logs /var/log/opencode/. Pass: !123AdminHermes. Healthcheck 401=ok. pkill "opencode serve" kills parent (-15).
+§
+Finance couple MCP server sudah aktif — tools tersedia dengan prefix `mcp_finance_*`: add_transaction, list_transactions, delete_transaction, list_wallets, add_wallet, update_wallet, list_categories, add_category, delete_category, get_summary, get_balance_sheet. DB: cozyfinance via PostgreSQL container infra-db-1. Langsung pakai tanpa perlu setup ulang.

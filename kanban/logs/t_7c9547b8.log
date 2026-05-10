@@ -1,0 +1,301 @@
+
+╭──────────── Hermes Agent v0.12.0 (2026.4.30) · upstream 7d66d30d ────────────╮
+│                                   Available Tools                            │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⣀⣀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   browser: browser_back, browser_click, ...  │
+│  ⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣇⠸⣿⣿⠇⣸⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀   browser-cdp: browser_cdp, browser_dialog   │
+│  ⠀⢀⣠⣴⣶⠿⠋⣩⡿⣿⡿⠻⣿⡇⢠⡄⢸⣿⠟⢿⣿⢿⣍⠙⠿⣶⣦⣄⡀⠀   clarify: clarify                           │
+│  ⠀⠀⠉⠉⠁⠶⠟⠋⠀⠉⠀⢀⣈⣁⡈⢁⣈⣁⡀⠀⠉⠀⠙⠻⠶⠈⠉⠉⠀⠀   code_execution: execute_code               │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⠛⢁⡈⠛⢿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   cronjob: cronjob                           │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⣿⣦⣤⣈⠁⢠⣴⣿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   delegation: delegate_task                  │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠻⢿⣿⣦⡉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   file: patch, read_file, search_files,      │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣦⣈⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   write_file                                 │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⠦⠈⠙⠿⣦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   hermes-yuanbao: yb_query_group_info, ...   │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣤⡈⠁⢤⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   (and 15 more toolsets...)                  │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠷⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠑⢶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   MCP Servers                                │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠁⢰⡆⠈⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   finance (stdio) — failed                   │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⠈⣡⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              │
+│  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   Available Skills                           │
+│                                   autonomous-ai-agents: claude-code, codex,  │
+│  deepseek-v4-pro · Nous Research  hermes-agent, opencode                     │
+│               /root               creative: architecture-diagram,            │
+│  Session: 20260508_075130_e6c0e3  ascii-art, ascii-video, b...               │
+│                                   data-science: jupyter-live-kernel          │
+│                                   devops: database-provisioning,             │
+│                                   finance-couple-mcp, kama...                │
+│                                   email: himalaya                            │
+│                                   gaming: minecraft-modpack-server,          │
+│                                   pokemon-player                             │
+│                                   general: dogfood, workspace-dispatch,      │
+│                                   yuanbao                                    │
+│                                   github: codebase-inspection, github-auth,  │
+│                                   github-code-r...                           │
+│                                   mcp: native-mcp                            │
+│                                   media: gif-search, heartmula, songsee,     │
+│                                   spotify, youtub...                         │
+│                                   mlops: audiocraft-audio-generation,        │
+│                                   axolotl, dspy, eva...                      │
+│                                   note-taking: obsidian                      │
+│                                   productivity: airtable, google-workspace,  │
+│                                   linear, maps, nano-...                     │
+│                                   red-teaming: godmode                       │
+│                                   research: arxiv, blogwatcher, llm-wiki,    │
+│                                   polymarket, resea...                       │
+│                                   smart-home: openhue                        │
+│                                   social-media: xurl                         │
+│                                   software-development:                      │
+│                                   debugging-hermes-tui-commands,             │
+│                                   frontend-ui-main...                        │
+│                                                                              │
+│                                   Profile: backend-eng                       │
+│                                   35 tools · 94 skills · /help for commands  │
+│                                   ⚠ 387 commits behind — run hermes update   │
+│                                   to update                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: work kanban task t_7c9547b8
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 📚 skill     rails-api-development  0.0s
+  ┊ 💻 $         cd /root/.worktrees/t_7c9547b8 && pwd && git status 2>/dev/null || echo "NOT A GIT WORKTREE"  1.4s
+  ┊ 💻 $         ls ~/projects/works/main/.git 2>/dev/null && echo "GIT REPO EXISTS" || echo "NO GIT REPO"  0.3s
+  ┊ 💻 $         cd ~/projects/works/main && git branch --show-current && git status --short --branch | head -10  0.3s [error]
+  ┊ 💻 $         ls -la ~/projects/works/ 2>/dev/null && echo "---" && ls -la ~/projects/ 2>/dev/null  0.3s [error]
+  ┊ 💻 $         find /root -maxdepth 1 -type d -name "projects" 2>/dev/null; find /home -maxdepth 2 -type d -name "projects" 2>/dev/null; ls -la /root/ 2>/dev/null | head -20  0.3s
+  ┊ 💻 $         ls -la /root/projects/ 2>/dev/null  0.3s
+  ┊ 💻 $         ls -la /root/projects/works/  0.3s
+  ┊ 💻 $         cd /root/projects/works/main && ls .git 2>/dev/null && echo "GIT" || echo "NO GIT"; ls .svn 2>/dev/null && echo "SVN" || echo "NO SVN"; git status --short --branch 2>/dev/null | head -5; git branch --show-current 2>/dev/null  0.3s [error]
+⚠️  Unknown tool 'task' — sending error to model for self-correction (1/3)
+  ┊ 💻 $         cd /root/projects/works/main && svn info 2>/dev/null | head -8  0.3s
+  ┊ 🔎 grep      hpp|harga_pokok|HPP  0.6s
+  ┊ 🔎 grep      hpp|harga_pokok|HPP  0.6s
+  ┊ 🔎 find      *produk_manufaktur*  1.0s
+  ┊ 📖 read      /root/projects/works/main/app/controllers/produk_manufakturs_controller.rb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/models/produk_manufaktur_detail_bahan_produk.rb  0.7s
+  ┊ 📖 read      /root/projects/works/main/app/models/produk_manufaktur_detail_hasil_produk.rb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_hasil_detail.erb  0.7s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_hasil.erb  0.5s
+  ┊ 📖 read      /root/projects/works/main/app/models/produk_manufaktur.rb  0.7s
+  ┊ 🔎 find      *produk_manufaktur*js*  0.7s
+  ┊ 🔎 find      manufaktur  0.6s
+  ┊ 🔎 grep      count_total_hpp  0.4s
+  ┊ 🔎 grep      hpp_hasil  0.4s
+  ┊ 🔎 grep      count_total_hpp_hasil  1.2s
+  ┊ 🔎 grep      total_hpp_hasil  1.2s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  0.9s
+  ┊ 📋 plan      6 task(s)  0.0s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_bahan.erb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_biaya.erb  0.9s
+  ┊ 🔎 grep      bootstrap.*modal|dialog_page_loading  0.4s
+  ┊ 🔎 grep      bootstrap  0.4s
+  ┊ 📋 plan      update 4 task(s)  0.0s
+  ┊ 🔧 patch     /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  1.1s
+  ┊ review diff
+a//root/projects/works/main/app/views/produk_manufakturs/_form.html.erb → b//root/projects/works/main/app/views/produk_manufakturs/_form.html.erb
+@@ -545,6 +545,153 @@
+     total_hpp = Math.round(total_hpp*100)/100;
+     $('#total_hpp_hasil').html("Rp "+currency_formated(total_hpp));
+     $('#total_hpp_text_hasil').val(total_hpp);
++  }
++
++  function hitung_hpp_otomatis(){
++    var total_hpp = parseFloat($('#total_hpp_text').val());
++    var total_biaya = parseFloat($('#total_biaya_text').val());
++    if(isNaN(total_hpp)) total_hpp = 0;
++    if(isNaN(total_biaya)) total_biaya = 0;
++    var total_cost = total_hpp + total_biaya;
++
++    if(total_cost <= 0){
++      alert('Total biaya bahan + beban masih 0. Harap isi data bahan dan/atau beban terlebih dahulu.');
++      return;
++    }
++
++    // Kumpulkan semua hasil row yang memiliki produk dan jumlah
++    var hasil_rows = [];
++    $('.searching_produk_nama_hasil').each(function(i, el){
++      var tr = $(el).closest('tr');
++      var nama = $(el).val();
++      var jumlah = parseFloat(tr.find('.jumlah_produk_hasil').val());
++      if(nama != '' && !isNaN(jumlah) && jumlah > 0){
++        hasil_rows.push({
++          tr: tr,
++          nama: nama,
++          jumlah: jumlah
++        });
++      }
++    });
++
++    if(hasil_rows.length === 0){
++      alert('Harap isi minimal satu produk hasil dengan jumlah.');
++      return;
++    }
++
++    // Hitung total jumlah hasil
++    var total_jumlah = 0;
++    $.each(hasil_rows, function(i, row){ total_jumlah += row.jumlah; });
++
++    // HPP per unit
++    var hpp_per_unit = total_cost / total_jumlah;
++    // Cek apakah pembagian bersih (integer atau desimal pendek tidak berulang)
++    var hpp_rounded = Math.round(hpp_per_unit * 100) / 100;
++    var total_check = Math.round(hpp_rounded * total_jumlah * 100) / 100;
++    var selisih = Math.abs(total_cost - total_check);
++
++    // Jika selisih sangat kecil (toleransi pembulatan), anggap bersih
++    if(selisih < 0.02){
++      // Langsung isi HPP
++      $.each(hasil_rows, function(i, row){
++        row.tr.find('.harga_pokok_text').val(hpp_rounded);
++        count_subtotal_hpp_hasil(row.tr);
++      });
++      count_total_hpp_hasil();
++      return;
++    }
++
++    // Jika tidak bersih, tampilkan modal pembulatan
++    // HPP dibulatkan ke atas (ceil ke integer)
++    var hpp_bulat = Math.ceil(hpp_per_unit);
++    var total_bulat = hpp_bulat * total_jumlah;
++    var biaya_pembulatan = Math.round((total_bulat - total_cost) * 100) / 100;
++
++    // Isi data modal
++    $('#modal_total_biaya').text(currency_formated(total_cost));
++    $('#modal_jumlah_hasil').text(total_jumlah);
++    $('#modal_hpp_desimal').text(currency_formated(hpp_rounded));
++    $('#modal_hpp_bulat').text(currency_formated(hpp_bulat));
++    $('#modal_biaya_pembulatan').text(currency_formated(biaya_pembulatan));
++    $('#modal_total_setelah_bulat').text(currency_formated(total_bulat));
++
++    // Simpan data untuk digunakan saat konfirmasi
++    $('#modal_hitung_hpp').data('hasil_rows', hasil_rows);
++    $('#modal_hitung_hpp').data('hpp_rounded', hpp_rounded);
++    $('#modal_hitung_hpp').data('hpp_bulat', hpp_bulat);
++    $('#modal_hitung_hpp').data('biaya_pembulatan', biaya_pembulatan);
+… omitted 75 diff line(s) across 1 additional file(s)/section(s)
+  ┊ 🔧 patch     /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  1.1s
+  ┊ review diff
+a//root/projects/works/main/app/views/produk_manufakturs/_form.html.erb → b//root/projects/works/main/app/views/produk_manufakturs/_form.html.erb
+@@ -1357,6 +1357,36 @@
+   </div>
+ <% end %>
+ 
++<% end %>
++
++<!-- Modal Hitung HPP Otomatis -->
++<div class="modal fade" id="modal_hitung_hpp" tabindex="-1" aria-labelledby="modal_hitung_hpp_label" aria-hidden="true">
++  <div class="modal-dialog">
++    <div class="modal-content">
++      <div class="modal-header">
++        <h5 class="modal-title" id="modal_hitung_hpp_label">Konfirmasi Pembulatan HPP</h5>
++        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
++      </div>
++      <div class="modal-body">
++        <p>HPP per unit menghasilkan nilai desimal. Disarankan menambahkan <strong>Beban Pembulatan</strong> agar HPP menjadi bulat.</p>
++        <table class="table table-bordered table-sm">
++          <tr><td style="width:50%">Total Biaya (Bahan + Beban)</td><td class="text-end"><strong>Rp <span id="modal_total_biaya">-</span></strong></td></tr>
++          <tr><td>Jumlah Hasil Produksi</td><td class="text-end"><span id="modal_jumlah_hasil">-</span></td></tr>
++          <tr><td>HPP per Unit (desimal)</td><td class="text-end text-warning">Rp <span id="modal_hpp_desimal">-</span></td></tr>
++          <tr><td>HPP per Unit (dibulatkan)</td><td class="text-end text-success">Rp <span id="modal_hpp_bulat">-</span></td></tr>
++          <tr><td>Beban Pembulatan yang ditambahkan</td><td class="text-end text-info">Rp <span id="modal_biaya_pembulatan">-</span></td></tr>
++          <tr><td>Total Setelah Pembulatan</td><td class="text-end"><strong>Rp <span id="modal_total_setelah_bulat">-</span></strong></td></tr>
++        </table>
++        <p class="mb-0"><em>Beban Pembulatan akan otomatis ditambahkan ke tabel Biaya/Beban Produksi.</em></p>
++      </div>
++      <div class="modal-footer">
++        <button type="button" class="btn btn-secondary" onclick="konfirmasi_hpp_pembulatan(false)">Tidak, isi desimal saja</button>
++        <button type="button" class="btn btn-primary" onclick="konfirmasi_hpp_pembulatan(true)">Ya, tambahkan Pembulatan</button>
++      </div>
++    </div>
++  </div>
++</div>
++
+ <% if @work_order.present? %>
+ <script type="text/javascript">
+ (function() {
+  ┊ 🔧 patch     /root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_hasil.erb  1.1s
+  ┊ review diff
+a//root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_hasil.erb → b//root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_hasil.erb
+@@ -102,8 +102,12 @@
+   </div>
+   <input type="hidden" value="<%= no %>" id="counter_hasil" name="counter_hasil"/>
+ 
+-  <div id='tambah_baris_tabel_hasil' onclick="tambah_baris_hasil()" class="btn btn-success tambah_baris">
+-    <i class="fa fa-plus-square" title="<%= t 'table.button.create_new' %>"></i> <%= t 'table.button.add_data' %>
+-    </div>
+-
+-</div>
++  <div id='tambah_baris_tabel_hasil' onclick="tambah_baris_hasil()" class="btn btn-success tambah_baris">
++    <i class="fa fa-plus-square" title="<%= t 'table.button.create_new' %>"></i> <%= t 'table.button.add_data' %>
++    </div>
++
++  <button type="button" id="btn_hitung_hpp" class="btn btn-info" onclick="hitung_hpp_otomatis()" style="margin-left: 10px;">
++    <i class="fa fa-calculator"></i> Hitung HPP
++  </button>
++
++</div>
+  ┊ 📋 plan      update 4 task(s)  0.0s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_hasil.erb  0.9s
+  ┊ 🔧 patch     /root/projects/works/main/app/views/produk_manufakturs/_form.html.erb  1.1s
+  ┊ review diff
+a//root/projects/works/main/app/views/produk_manufakturs/_form.html.erb → b//root/projects/works/main/app/views/produk_manufakturs/_form.html.erb
+@@ -1357,8 +1357,6 @@
+   </div>
+ <% end %>
+ 
+-<% end %>
+-
+ <!-- Modal Hitung HPP Otomatis -->
+ <div class="modal fade" id="modal_hitung_hpp" tabindex="-1" aria-labelledby="modal_hitung_hpp_label" aria-hidden="true">
+   <div class="modal-dialog">
+  ┊ 🔎 grep      add_new_list_biaya|add_new_list_hasil  0.4s
+  ┊ 📖 read      /root/projects/works/main/app/controllers/produk_manufakturs_controller.rb  0.9s
+  ┊ 📖 read      /root/projects/works/main/app/views/produk_manufakturs/_form_produk_manufaktur_biaya_detail.erb  0.9s
+  ┊ 🔎 find      perkiraan_search_nama  0.6s
+  ┊ 🔎 find      _perkiraan_search_nama  0.6s
+  ┊ 💻 $         find /root/projects/works/main/app/views/perkiraans -name "*search_nama*" -o -name "*perkiraan_search*" 2>/dev/null  0.3s
+  ┊ 📖 read      /root/projects/works/main/app/views/perkiraans/_perkiraan_search_nama.erb  0.9s
+  ┊ 📋 plan      update 4 task(s)  0.0s
+  ┊ 💻 $         cd /root/projects/works/main && svn diff --diff-cmd=diff -x "-U3" app/views/produk_manufakturs/_form.html.erb | head -120  0.3s
+  ┊ 💻 $         cd /root/projects/works/main && svn diff --diff-cmd=diff -x "-U3" app/views/produk_manufakturs/_form.html.erb | tail -100  0.3s
+  ┊ 💻 $         cd /root/projects/works/main && svn diff --diff-cmd=diff -x "-U1" app/views/produk_manufakturs/_form_produk_manufaktur_hasil.erb  0.3s
+  ┊ 📋 plan      update 4 task(s)  0.0s
+  ┊ ⚡ kanban_co   0.0s
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Done. Berikut ringkasan implementasi:                                      
+     Perubahan                                                                  
+     2 file dimodifikasi:                                                       
+                                                                                
+     1. app/views/produk_manufakturs/_form.html.erb (+153 lines)                
+     - 3 fungsi JS baru:                                                        
+       - hitung_hpp_otomatis() — ambil total biaya (bahan + beban), hitung      
+     HPP = total / jumlah_hasil. Jika pembagian bersih → langsung isi. Jika     
+     desimal → tampilkan modal.                                                 
+       - konfirmasi_hpp_pembulatan(pakai_pembulatan) — handle pilihan user      
+     di modal. Jika "Ya" → isi HPP bulat + tambah baris Beban Pembulatan.       
+     Jika "Tidak" → isi HPP desimal.                                            
+       - tambah_baris_biaya_pembulatan(nilai) — tambah baris biaya baru via     
+     AJAX, isi nilai pembulatan dan label "Beban Pembulatan"                    
+     - 1 modal Bootstrap #modal_hitung_hpp — menampilkan rincian: total         
+     biaya, jumlah hasil, HPP desimal vs bulat, selisih pembulatan              
+                                                                                
+     2. app/views/produk_manufakturs/_form_produk_manufaktur_hasil.erb (+4      
+     lines)                                                                     
+     - Tombol biru "Hitung HPP" di samping tombol "Tambah Data" pada tabel      
+     Hasil Produksi                                                             
+     Alur fitur:                                                                
+     1. User isi bahan + beban + produk hasil dengan jumlah                     
+     2. Klik "Hitung HPP"                                                       
+     3. Jika total biaya habis dibagi jumlah → kolom HPP langsung terisi        
+     4. Jika desimal → modal muncul menawarkan pembulatan ke atas:              
+        - "Ya" → HPP dibulatkan ke atas + baris Beban Pembulatan otomatis       
+     ditambahkan (user perlu pilih akun perkiraan yang valid saat submit)       
+        - "Tidak" → HPP diisi dengan nilai desimal apa adanya                   
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 

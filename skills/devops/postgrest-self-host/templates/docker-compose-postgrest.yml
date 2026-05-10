@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cozyfinance
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: CHANGE_ME
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d cozyfinance"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  postgrest:
+    image: postgrest/postgrest:v14.11
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3334:3000"
+    environment:
+      PGRST_DB_URI: postgres://authenticator:CHANGE_ME@db:5432/cozyfinance
+      PGRST_DB_SCHEMAS: public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: "CHANGE_ME_JWT_SECRET_ANY_LONG_STRING"
+      PGRST_JWT_SECRET_IS_BASE64: "false"
+      PGRST_SERVER_PORT: "3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

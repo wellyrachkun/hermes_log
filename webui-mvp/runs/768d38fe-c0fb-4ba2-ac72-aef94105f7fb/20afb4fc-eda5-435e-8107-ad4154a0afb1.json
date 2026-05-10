@@ -1,0 +1,15 @@
+{
+  "runId": "20afb4fc-eda5-435e-8107-ad4154a0afb1",
+  "sessionKey": "768d38fe-c0fb-4ba2-ac72-aef94105f7fb",
+  "friendlyId": "768d38fe-c0fb-4ba2-ac72-aef94105f7fb",
+  "status": "active",
+  "createdAt": 1778241521476,
+  "updatedAt": 1778241525071,
+  "lastEventAt": 1778241525071,
+  "assistantText": "Saya pakai **deep",
+  "thinkingText": "",
+  "toolCalls": [],
+  "lifecycleEvents": []
+}
+]
+}

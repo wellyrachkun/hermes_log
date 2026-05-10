@@ -1,0 +1,28 @@
+{
+  "runId": "ebe3f81b-8e25-4574-9b39-6049eae07fa8",
+  "sessionKey": "add611e7-2a5e-4a9d-8ddd-1add6bd621ac",
+  "friendlyId": "add611e7-2a5e-4a9d-8ddd-1add6bd621ac",
+  "status": "active",
+  "createdAt": 1777944538880,
+  "updatedAt": 1777944545679,
+  "lastEventAt": 1777944545679,
+  "assistantText": "",
+  "thinkingText": "",
+  "toolCalls": [
+    {
+      "id": "call_REedswgtFSqvIn2UJv51MVU1",
+      "name": "skill_view",
+      "phase": "complete",
+      "preview": "skill_view"
+    },
+    {
+      "id": "call_tE2aF7VAv1PwdfwK7HPFuRK5",
+      "name": "todo",
+      "phase": "complete",
+      "preview": "todo"
+    }
+  ],
+  "lifecycleEvents": []
+}
+ycleEvents": []
+}

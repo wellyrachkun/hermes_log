@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" width="240" height="180">
+  
+  <path d="M70 20 H170 V160 L160 152 L150 160 L140 152 L130 160 L120 152 L110 160 L100 152 L90 160 L80 152 L70 160 Z" fill="#ffffff" stroke="#14110e" stroke-width="3" stroke-linejoin="round"></path>
+  <line x1="84" y1="48" x2="156" y2="48" stroke="#14110e" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="84" y1="68" x2="140" y2="68" stroke="#cfc8bb" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="84" y1="84" x2="156" y2="84" stroke="#cfc8bb" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="84" y1="100" x2="130" y2="100" stroke="#cfc8bb" stroke-width="3" stroke-linecap="round"></line>
+  <rect x="84" y="116" width="72" height="22" fill="#fdd000" rx="4"></rect>
+  <text x="120" y="132" text-anchor="middle" font-family="&#39;Plus Jakarta Sans&#39;, sans-serif" font-weight="700" font-size="14" fill="#14110e">PAID</text>
+</svg>

@@ -1,0 +1,112 @@
+{
+  "unlocks": {
+    "autonomous_avalanche": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1777987775
+    },
+    "browser_possession": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1778158840
+    },
+    "claude_confidant": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1777818098
+    },
+    "config_surgeon": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1777818098
+    },
+    "dependency_hell_tourist": {
+      "evidence": null,
+      "first_tier": null,
+      "unlocked_at": 1778158840
+    },
+    "five_model_flight": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1777855961
+    },
+    "gemini_cartographer": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1778158840
+    },
+    "let_him_cook": {
+      "evidence": {
+        "session_id": "20260507_101139_c365ddcf",
+        "title": "Numbers not loading on mobile",
+        "value": 233
+      },
+      "first_tier": "Copper",
+      "unlocked_at": 1778158840
+    },
+    "marathon_operator": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1778336234
+    },
+    "model_sommelier": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1777818098
+    },
+    "port_3000_taken": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1778336234
+    },
+    "provider_polyglot": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1777818098
+    },
+    "rebase_acrobat": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1777818098
+    },
+    "screenshot_hunter": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1777818098
+    },
+    "supposed_to_be_quick": {
+      "evidence": {
+        "session_id": "20260502_224351_65ae2f",
+        "title": "hallo, kamu pake model apa sekarang?",
+        "value": 328
+      },
+      "first_tier": "Copper",
+      "unlocked_at": 1777818098
+    },
+    "terminal_goblin": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1778158840
+    },
+    "test_suite_tamer": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1777818098
+    },
+    "toolset_cartographer": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1777818098
+    },
+    "weekend_warrior": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1778336234
+    },
+    "yaml_colon_incident": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1778237499
+    }
+  }
+}

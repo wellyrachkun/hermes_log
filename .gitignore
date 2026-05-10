@@ -1,6 +1,3 @@
-# Ignore everything by default
-*
-# Except these
-!.gitignore
-!backup.sh
-!README.md
+# Nothing to ignore — backup script controls what goes in
+.DS_Store
+Thumbs.db

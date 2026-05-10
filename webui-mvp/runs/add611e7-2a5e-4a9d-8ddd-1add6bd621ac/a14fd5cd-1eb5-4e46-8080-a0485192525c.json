@@ -1,0 +1,100 @@
+{
+  "runId": "a14fd5cd-1eb5-4e46-8080-a0485192525c",
+  "sessionKey": "add611e7-2a5e-4a9d-8ddd-1add6bd621ac",
+  "friendlyId": "add611e7-2a5e-4a9d-8ddd-1add6bd621ac",
+  "status": "active",
+  "createdAt": 1777944442376,
+  "updatedAt": 1777944484493,
+  "lastEventAt": 1777944484493,
+  "assistantText": "",
+  "thinkingText": "",
+  "toolCalls": [
+    {
+      "id": "call_SG4gwBALhE8I78LaLybSBaD4",
+      "name": "skill_view",
+      "phase": "complete",
+      "preview": "skill_view"
+    },
+    {
+      "id": "call_4pX18PxsR7Va6LsnV7VeLy3U",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_wXtkr7odoR9fQMM1H6eI6eMY",
+      "name": "skill_view",
+      "phase": "complete",
+      "preview": "skill_view"
+    },
+    {
+      "id": "call_Hd7QWL1nURvRGNIBj1y5wjco",
+      "name": "terminal",
+      "phase": "complete",
+      "preview": "terminal"
+    },
+    {
+      "id": "call_9IVXH0NSXILDdm3XUsNnhYAN",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_zUiHh7EYU7AC4VynBxNrpt6Y",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_3QMBL8nKklS2GMwt3oPWGEy0",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_w0T999rgoFrC0KIOSJzs0Iye",
+      "name": "read_file",
+      "phase": "calling",
+      "preview": "📖 /root/projects/freelance/travel_agent/app/models/product_badge.rb"
+    },
+    {
+      "id": "call_19XIbwK9xOrBq9mgwSw1VX17",
+      "name": "read_file",
+      "phase": "complete",
+      "preview": "read_file"
+    },
+    {
+      "id": "call_Rsss5CMJCC1Q3S0UmuEFe6NG",
+      "name": "read_file",
+      "phase": "calling",
+      "preview": "📖 /root/projects/freelance/travel_agent/app/views/product_badges/_product_badge.json.jbuilder"
+    },
+    {
+      "id": "call_Pj8YmN1TqnvzBRbeECH1dEKT",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_Mmkozu28KQT19c36VG15wk3J",
+      "name": "search_files",
+      "phase": "calling",
+      "preview": "🔎 create_table \"product_badges\"|product_badges"
+    },
+    {
+      "id": "call_xUOQBuwAlVZzVtwmzRLDHGLl",
+      "name": "search_files",
+      "phase": "calling",
+      "preview": "🔎 name|description|is_active|form"
+    },
+    {
+      "id": "call_hnYwnwkvhwzMEv6F2B1ssgcZ",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    }
+  ],
+  "lifecycleEvents": []
+}
+fecycleEvents": []
+}

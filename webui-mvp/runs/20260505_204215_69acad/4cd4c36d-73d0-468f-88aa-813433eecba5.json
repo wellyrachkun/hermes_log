@@ -1,0 +1,15 @@
+{
+  "runId": "4cd4c36d-73d0-468f-88aa-813433eecba5",
+  "sessionKey": "20260505_204215_69acad",
+  "friendlyId": "20260505_204215_69acad",
+  "status": "active",
+  "createdAt": 1778241641680,
+  "updatedAt": 1778241645884,
+  "lastEventAt": 1778241645884,
+  "assistantText": "Saya pakai profile default",
+  "thinkingText": "",
+  "toolCalls": [],
+  "lifecycleEvents": []
+}
+]
+}

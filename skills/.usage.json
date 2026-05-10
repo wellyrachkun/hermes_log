@@ -1,0 +1,113 @@
+{
+  "database-provisioning": {
+    "archived_at": null,
+    "created_at": "2026-05-02T11:45:38.418197+00:00",
+    "last_patched_at": "2026-05-07T03:24:21.623709+00:00",
+    "last_used_at": "2026-05-07T03:21:38.967704+00:00",
+    "last_viewed_at": "2026-05-07T03:21:38.964608+00:00",
+    "patch_count": 7,
+    "pinned": false,
+    "state": "active",
+    "use_count": 3,
+    "view_count": 3
+  },
+  "finance-couple-mcp": {
+    "archived_at": null,
+    "created_at": "2026-05-07T11:05:52.515657+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-05-07T11:55:43.231971+00:00",
+    "last_used_at": "2026-05-09T08:32:25.332833+00:00",
+    "last_viewed_at": "2026-05-09T08:32:25.326679+00:00",
+    "patch_count": 4,
+    "pinned": false,
+    "state": "active",
+    "use_count": 2,
+    "view_count": 2
+  },
+  "frontend-ui-maintenance": {
+    "archived_at": null,
+    "created_at": "2026-05-03T10:31:06.445592+00:00",
+    "last_patched_at": "2026-05-08T14:30:31.454677+00:00",
+    "last_used_at": "2026-05-08T14:29:03.083710+00:00",
+    "last_viewed_at": "2026-05-08T14:29:03.080680+00:00",
+    "patch_count": 21,
+    "pinned": false,
+    "state": "active",
+    "use_count": 15,
+    "view_count": 16
+  },
+  "kamal-deployment": {
+    "archived_at": null,
+    "created_at": "2026-05-02T14:52:26.695245+00:00",
+    "last_patched_at": "2026-05-05T03:31:14.281394+00:00",
+    "last_used_at": "2026-05-08T10:24:49.948264+00:00",
+    "last_viewed_at": "2026-05-08T10:24:49.945835+00:00",
+    "patch_count": 13,
+    "pinned": false,
+    "state": "active",
+    "use_count": 15,
+    "view_count": 15
+  },
+  "postgrest-self-host": {
+    "archived_at": null,
+    "created_at": "2026-05-07T03:22:38.211470+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-05-07T03:24:00.369270+00:00",
+    "last_used_at": "2026-05-09T08:32:25.335624+00:00",
+    "last_viewed_at": "2026-05-09T08:32:25.330031+00:00",
+    "patch_count": 4,
+    "pinned": false,
+    "state": "active",
+    "use_count": 5,
+    "view_count": 5
+  },
+  "rails-api-development": {
+    "archived_at": null,
+    "created_at": "2026-05-03T08:07:49.821114+00:00",
+    "last_patched_at": "2026-05-10T05:16:36.402391+00:00",
+    "last_used_at": "2026-05-10T05:16:41.110102+00:00",
+    "last_viewed_at": "2026-05-10T05:16:41.105795+00:00",
+    "patch_count": 52,
+    "pinned": false,
+    "state": "active",
+    "use_count": 34,
+    "view_count": 35
+  },
+  "refactor-inline-js-pola-lanjutan": {
+    "archived_at": null,
+    "created_at": "2026-05-09T03:47:21.396101+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-05-09T05:36:58.095287+00:00",
+    "last_used_at": "2026-05-09T08:32:25.312618+00:00",
+    "last_viewed_at": "2026-05-09T08:32:25.306135+00:00",
+    "patch_count": 10,
+    "pinned": false,
+    "state": "active",
+    "use_count": 5,
+    "view_count": 5
+  },
+  "remote-dev-setup": {
+    "archived_at": null,
+    "created_at": "2026-05-02T11:44:23.849660+00:00",
+    "last_patched_at": "2026-05-04T14:14:29.942369+00:00",
+    "last_used_at": "2026-05-04T14:14:15.840240+00:00",
+    "last_viewed_at": "2026-05-04T14:14:15.836645+00:00",
+    "patch_count": 4,
+    "pinned": false,
+    "state": "active",
+    "use_count": 6,
+    "view_count": 6
+  },
+  "subversion-workflow": {
+    "archived_at": null,
+    "created_at": "2026-05-02T08:07:30.687095+00:00",
+    "last_patched_at": "2026-05-08T07:26:37.228300+00:00",
+    "last_used_at": "2026-05-08T07:26:44.843912+00:00",
+    "last_viewed_at": "2026-05-08T07:26:44.840594+00:00",
+    "patch_count": 11,
+    "pinned": false,
+    "state": "active",
+    "use_count": 19,
+    "view_count": 19
+  }
+}

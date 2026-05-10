@@ -1,0 +1,250 @@
+/* ============================================================
+   Joyphone Design System — Colors, Type, Spacing, Shadows
+   Light + Dark mode via [data-theme] on <html> or <body>
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root,
+[data-theme="light"] {
+  /* ---------- Brand ---------- */
+  --joy-yellow: #fdd000;
+  --joy-yellow-600: #e8bd00;
+  --joy-yellow-700: #c9a300;
+  --joy-yellow-100: #fff7cc;
+  --joy-yellow-50:  #fffce6;
+
+  /* ---------- Neutrals (warm slate) ---------- */
+  --neutral-0:   #ffffff;
+  --neutral-25:  #fafaf9;
+  --neutral-50:  #f5f4f0;
+  --neutral-100: #efece6;
+  --neutral-200: #e4dfd6;
+  --neutral-300: #cfc8bb;
+  --neutral-400: #a8a094;
+  --neutral-500: #7a7468;
+  --neutral-600: #524d44;
+  --neutral-700: #36322c;
+  --neutral-800: #1f1c18;
+  --neutral-900: #14110e;
+
+  /* ---------- Semantic ---------- */
+  --success-500: #10b981;
+  --success-100: #d1fae5;
+  --success-50:  #ecfdf5;
+  --danger-500:  #ef4444;
+  --danger-100:  #fee2e2;
+  --danger-50:   #fef2f2;
+  --info-500:    #3b82f6;
+  --info-100:    #dbeafe;
+  --info-50:     #eff6ff;
+  --warning-500: #f59e0b;
+  --warning-100: #fef3c7;
+  --warning-50:  #fffbeb;
+
+  /* ---------- Surfaces ---------- */
+  --bg:        #fafaf9;       /* page */
+  --bg-1:      #ffffff;       /* card */
+  --bg-2:      #f5f4f0;       /* hover row, subtle fill */
+  --bg-3:      #efece6;       /* heavier fill */
+  --bg-inset:  #f5f4f0;       /* input background */
+  --bg-overlay: rgba(20, 17, 14, 0.40);
+
+  /* ---------- Foreground (text) ---------- */
+  --fg-1: #14110e;            /* primary text */
+  --fg-2: #524d44;            /* secondary text */
+  --fg-3: #7a7468;            /* tertiary, captions */
+  --fg-4: #a8a094;            /* disabled, placeholder */
+  --fg-on-yellow: #14110e;    /* text on yellow surfaces */
+  --fg-on-dark:   #ffffff;    /* text on dark surfaces */
+
+  /* ---------- Borders ---------- */
+  --border-1: #eeeae3;        /* hairline */
+  --border-2: #e4dfd6;        /* stronger */
+  --border-strong: #cfc8bb;
+  --border-focus: var(--joy-yellow);
+
+  /* ---------- Sidebar (slightly distinct from page) ---------- */
+  --sidebar-bg: #ffffff;
+  --sidebar-fg: var(--fg-2);
+  --sidebar-fg-active: var(--fg-1);
+  --sidebar-hover: var(--bg-2);
+  --sidebar-active-bg: rgba(253, 208, 0, 0.12);
+  --sidebar-active-bar: var(--joy-yellow);
+
+  /* ---------- Shadows ---------- */
+  --shadow-xs: 0 1px 1px rgba(15, 20, 25, 0.03);
+  --shadow-sm: 0 1px 2px rgba(15, 20, 25, 0.04), 0 0 0 1px rgba(15, 20, 25, 0.02);
+  --shadow-md: 0 4px 12px rgba(15, 20, 25, 0.06), 0 1px 2px rgba(15, 20, 25, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 20, 25, 0.10), 0 2px 6px rgba(15, 20, 25, 0.05);
+  --shadow-focus: 0 0 0 3px rgba(253, 208, 0, 0.35);
+
+  /* ---------- Chart palette ---------- */
+  --chart-1: #fdd000;         /* brand yellow */
+  --chart-2: #14110e;         /* near black */
+  --chart-3: #3b82f6;         /* blue */
+  --chart-4: #10b981;         /* green */
+  --chart-5: #ef4444;         /* red */
+  --chart-6: #a78bfa;         /* purple */
+  --chart-7: #f59e0b;         /* orange */
+  --chart-grid: var(--border-1);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* ---------- Surfaces ---------- */
+  --bg:        #0a0d12;
+  --bg-1:      #13171f;
+  --bg-2:      #1a1f2a;
+  --bg-3:      #222834;
+  --bg-inset:  #0f131a;
+  --bg-overlay: rgba(0, 0, 0, 0.60);
+
+  /* ---------- Foreground ---------- */
+  --fg-1: #f3f1ec;
+  --fg-2: #b9b5ad;
+  --fg-3: #898581;
+  --fg-4: #5a5752;
+  --fg-on-yellow: #14110e;    /* still dark text on yellow */
+  --fg-on-dark:   #ffffff;
+
+  /* ---------- Borders ---------- */
+  --border-1: #222834;
+  --border-2: #2c3340;
+  --border-strong: #3a4252;
+
+  /* ---------- Sidebar ---------- */
+  --sidebar-bg: #0f131a;
+  --sidebar-fg: var(--fg-2);
+  --sidebar-fg-active: var(--fg-1);
+  --sidebar-hover: #1a1f2a;
+  --sidebar-active-bg: rgba(253, 208, 0, 0.14);
+  --sidebar-active-bar: var(--joy-yellow);
+
+  /* ---------- Shadows (subtle in dark) ---------- */
+  --shadow-xs: 0 1px 1px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+
+  /* ---------- Adjusted semantic backgrounds ---------- */
+  --success-100: rgba(16, 185, 129, 0.16);
+  --success-50:  rgba(16, 185, 129, 0.08);
+  --danger-100:  rgba(239, 68, 68, 0.16);
+  --danger-50:   rgba(239, 68, 68, 0.08);
+  --info-100:    rgba(59, 130, 246, 0.18);
+  --info-50:     rgba(59, 130, 246, 0.08);
+  --warning-100: rgba(245, 158, 11, 0.18);
+  --warning-50:  rgba(245, 158, 11, 0.08);
+
+  --joy-yellow-100: rgba(253, 208, 0, 0.16);
+  --joy-yellow-50:  rgba(253, 208, 0, 0.08);
+
+  --chart-grid: #222834;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   Type system
+   ============================================================ */
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale (rem, root = 16px) */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.8125rem; /* 13px */
+  --text-base: 0.875rem;  /* 14px - default UI text */
+  --text-md:   1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.375rem;  /* 22px */
+  --text-2xl:  1.75rem;   /* 28px */
+  --text-3xl:  2.25rem;   /* 36px */
+  --text-4xl:  3rem;      /* 48px */
+
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+  --leading-loose:  1.7;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;
+}
+
+/* ============================================================
+   Spacing, radii, motion
+   ============================================================ */
+
+:root {
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+  --radius-pill: 999px;
+
+  --ease-out:  cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 280ms;
+  --dur-4: 400ms;
+
+  --sidebar-w: 248px;
+  --sidebar-w-collapsed: 72px;
+  --topbar-h: 64px;
+}
+
+/* ============================================================
+   Semantic helper classes
+   ============================================================ */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg-1);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.h1, h1.joy { font-size: var(--text-3xl); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--fg-1); }
+.h2, h2.joy { font-size: var(--text-2xl); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--fg-1); }
+.h3, h3.joy { font-size: var(--text-xl); font-weight: var(--weight-semibold); line-height: var(--leading-snug); color: var(--fg-1); }
+.h4, h4.joy { font-size: var(--text-lg); font-weight: var(--weight-semibold); line-height: var(--leading-snug); color: var(--fg-1); }
+
+.body  { font-size: var(--text-base); color: var(--fg-1); }
+.muted { color: var(--fg-2); }
+.caption { font-size: var(--text-xs); color: var(--fg-3); }
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-3);
+}
+.mono { font-family: var(--font-mono); font-feature-settings: 'tnum'; }
+.tnum { font-variant-numeric: tabular-nums; }
