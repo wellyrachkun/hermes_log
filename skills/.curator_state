@@ -3,6 +3,7 @@
   "last_run_at": "2026-05-09T08:31:54.474483+00:00",
   "last_run_duration_seconds": 84.692823,
   "last_run_summary": "auto: no changes; llm: ## Curator Analysis\n\nI've loaded all 3 agent-created skills. Here's the landscape:\n\n| Skill | Domain | Content |\n|-------|--------|---------|\n| `finance-couple-mcp` | DevOps / MCP | Developing a specific Python stdio MCP server for Finance …",
+  "last_run_summary_shown_at": "2026-05-09T08:31:54.474483+00:00",
   "paused": false,
   "run_count": 1
 }

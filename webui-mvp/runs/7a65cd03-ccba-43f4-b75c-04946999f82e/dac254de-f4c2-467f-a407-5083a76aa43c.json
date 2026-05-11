@@ -1,0 +1,15 @@
+{
+  "runId": "dac254de-f4c2-467f-a407-5083a76aa43c",
+  "sessionKey": "7a65cd03-ccba-43f4-b75c-04946999f82e",
+  "friendlyId": "7a65cd03-ccba-43f4-b75c-04946999f82e",
+  "status": "active",
+  "createdAt": 1778485257208,
+  "updatedAt": 1778485278657,
+  "lastEventAt": 1778485278657,
+  "assistantText": "Ah, sekarang clear masalahnya. Response dari `@react-oauth/google` itu **tidak ada `id_token`** — cuma",
+  "thinkingText": "",
+  "toolCalls": [],
+  "lifecycleEvents": []
+}
+]
+}

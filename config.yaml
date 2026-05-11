@@ -6,7 +6,7 @@ providers: {}
 fallback_providers: []
 credential_pool_strategies: {}
 toolsets:
-- hermes-cli
+  - hermes-cli
 agent:
   max_turns: 90
   gateway_timeout: 1800
@@ -191,9 +191,9 @@ display:
   runtime_footer:
     enabled: false
     fields:
-    - model
-    - context_pct
-    - cwd
+      - model
+      - context_pct
+      - cwd
   copy_shortcut: auto
   tool_progress: all
 dashboard:
@@ -308,6 +308,7 @@ approvals:
   timeout: 60
   cron_mode: deny
   mcp_reload_confirm: true
+  destructive_slash_confirm: false
 command_allowlist: []
 quick_commands: {}
 hooks: {}
@@ -326,7 +327,7 @@ security:
     shared_files: []
 cron:
   wrap_response: true
-  max_parallel_jobs: null
+  max_parallel_jobs:
 kanban:
   dispatch_in_gateway: true
   dispatch_interval_seconds: 60
@@ -363,48 +364,48 @@ smart_model_routing:
   enabled: true
 platform_toolsets:
   cli:
-  - browser
-  - clarify
-  - code_execution
-  - cronjob
-  - delegation
-  - file
-  - image_gen
-  - memory
-  - messaging
-  - session_search
-  - skills
-  - terminal
-  - todo
-  - tts
-  - vision
-  - web
+    - browser
+    - clarify
+    - code_execution
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - memory
+    - messaging
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
   discord:
-  - browser
-  - clarify
-  - code_execution
-  - cronjob
-  - delegation
-  - file
-  - image_gen
-  - memory
-  - messaging
-  - session_search
-  - skills
-  - terminal
-  - todo
-  - tts
-  - vision
-  - web
+    - browser
+    - clarify
+    - code_execution
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - memory
+    - messaging
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
 known_plugin_toolsets:
   cli:
-  - spotify
+    - spotify
   discord:
-  - spotify
+    - spotify
 mcp_servers:
   finance:
     command: /root/hermes-mcp-servers/finance_couple/venv/bin/python3
     args:
-    - /root/hermes-mcp-servers/finance_couple/server.py
+      - /root/hermes-mcp-servers/finance_couple/server.py
     enabled: false
 provider: kimi-coding

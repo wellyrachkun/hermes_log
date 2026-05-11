@@ -1,0 +1,190 @@
+{
+  "runId": "3d9a5077-be75-4297-963f-341957326199",
+  "sessionKey": "7a65cd03-ccba-43f4-b75c-04946999f82e",
+  "friendlyId": "7a65cd03-ccba-43f4-b75c-04946999f82e",
+  "status": "active",
+  "createdAt": 1778483590457,
+  "updatedAt": 1778483824954,
+  "lastEventAt": 1778483824954,
+  "assistantText": "\n\nSaya sudah cek dokumentasi Google dan kode backend travel agent. Ini jawabannya:\n\n**Ya, `id_token` = `credential`.**\n\nKode backend di `oauth_controller.rb` line 55:\n```ruby\npayload = Google::Auth::IDTokens.verify_",
+  "thinkingText": "",
+  "toolCalls": [
+    {
+      "id": "call_00_VJRQRJPpqGhRYBKaszvp8356",
+      "name": "browser_navigate",
+      "phase": "complete",
+      "preview": "browser_navigate"
+    },
+    {
+      "id": "call_01_Fijd5O1Qfa8nI0YS3Fjm7479",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_00_2xtsPcVsTaCf2LA0YsxB8483",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_01_oY2pQUsnHBgzGwk6HjkZ0990",
+      "name": "browser_scroll",
+      "phase": "complete",
+      "preview": "browser_scroll"
+    },
+    {
+      "id": "call_00_OFiva6swKDXD7xmuysJe2638",
+      "name": "terminal",
+      "phase": "complete",
+      "preview": "terminal"
+    },
+    {
+      "id": "call_01_hyVTWQSRGNPZooifDR8R2661",
+      "name": "browser_snapshot",
+      "phase": "complete",
+      "preview": "browser_snapshot"
+    },
+    {
+      "id": "call_00_5hQAFSTbCkOnZGj0KLh59251",
+      "name": "browser_navigate",
+      "phase": "complete",
+      "preview": "browser_navigate"
+    },
+    {
+      "id": "call_01_6iUBqXeHFqgs1vTtzZKV8432",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_00_sLZZtGMPaATzJnmOsKTB6875",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_00_zEBdJBMwDOMzd08Bf5nA6578",
+      "name": "terminal",
+      "phase": "complete",
+      "preview": "terminal"
+    },
+    {
+      "id": "call_00_eanIeSdUyiPEXvmQoPwS8754",
+      "name": "terminal",
+      "phase": "complete",
+      "preview": "terminal"
+    },
+    {
+      "id": "call_00_oY3bpNTFbHzKeGS52pUQ9971",
+      "name": "read_file",
+      "phase": "complete",
+      "preview": "read_file"
+    },
+    {
+      "id": "call_01_DicJXxde1g7TffVMmWK21457",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_00_TXctryulVbjEy3QXQmSg6158",
+      "name": "read_file",
+      "phase": "calling",
+      "preview": "📖 /root/projects/freelance/travel_agent/app/models/user.rb"
+    },
+    {
+      "id": "call_01_2x6lbG9Sbsnbpu6qXzNm9482",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_00_5CJyKLWLIkQ1Q7wIPryA2362",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_01_6wUCpBIFLXbpGbBg55DQ0123",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_00_8f0RYTmmNgefj91e3TCd3840",
+      "name": "terminal",
+      "phase": "complete",
+      "preview": "terminal"
+    },
+    {
+      "id": "call_01_DW1X3YTBUljshticHo9d2868",
+      "name": "read_file",
+      "phase": "complete",
+      "preview": "read_file"
+    },
+    {
+      "id": "call_00_aelpfaens6ndIverIIeR9851",
+      "name": "browser_navigate",
+      "phase": "complete",
+      "preview": "browser_navigate"
+    },
+    {
+      "id": "call_00_gvTIvYfyOq1YoV6pxcic3748",
+      "name": "browser_navigate",
+      "phase": "complete",
+      "preview": "browser_navigate"
+    },
+    {
+      "id": "call_00_5E8vYliJCM9WxrmaAY6M9374",
+      "name": "browser_scroll",
+      "phase": "complete",
+      "preview": "browser_scroll"
+    },
+    {
+      "id": "call_00_jtamg7S0W1jisqyCYxTK5685",
+      "name": "browser_snapshot",
+      "phase": "complete",
+      "preview": "browser_snapshot"
+    },
+    {
+      "id": "call_00_ydrHpoF4MXUdzvAFMKL74806",
+      "name": "browser_click",
+      "phase": "complete",
+      "preview": "browser_click"
+    },
+    {
+      "id": "call_00_Pz3YYGcAEGPWbLw7BKfz5984",
+      "name": "browser_scroll",
+      "phase": "complete",
+      "preview": "browser_scroll"
+    },
+    {
+      "id": "call_00_kC7XOQTRTDmOgg5dxSCV2170",
+      "name": "browser_console",
+      "phase": "complete",
+      "preview": "browser_console"
+    },
+    {
+      "id": "call_00_sjvRc2aXnXRSX6Fi7Fsp6103",
+      "name": "terminal",
+      "phase": "complete",
+      "preview": "terminal"
+    },
+    {
+      "id": "call_00_uJDq7pHsDVldUVbF2ljD5494",
+      "name": "read_file",
+      "phase": "complete",
+      "preview": "read_file"
+    },
+    {
+      "id": "call_01_wnF6VbdtoV4UAkVDNUa74023",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    }
+  ],
+  "lifecycleEvents": []
+}
+
+}

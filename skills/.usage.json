@@ -36,6 +36,19 @@
     "use_count": 15,
     "view_count": 16
   },
+  "hermes-workspace-maintenance": {
+    "archived_at": null,
+    "created_at": "2026-05-11T02:12:18.882027+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-05-11T10:33:27.737369+00:00",
+    "last_used_at": "2026-05-11T10:32:49.582378+00:00",
+    "last_viewed_at": "2026-05-11T10:32:49.578193+00:00",
+    "patch_count": 24,
+    "pinned": false,
+    "state": "active",
+    "use_count": 25,
+    "view_count": 25
+  },
   "kamal-deployment": {
     "archived_at": null,
     "created_at": "2026-05-02T14:52:26.695245+00:00",
@@ -64,14 +77,14 @@
   "rails-api-development": {
     "archived_at": null,
     "created_at": "2026-05-03T08:07:49.821114+00:00",
-    "last_patched_at": "2026-05-10T05:16:36.402391+00:00",
-    "last_used_at": "2026-05-10T05:16:41.110102+00:00",
-    "last_viewed_at": "2026-05-10T05:16:41.105795+00:00",
-    "patch_count": 52,
+    "last_patched_at": "2026-05-11T07:18:49.757403+00:00",
+    "last_used_at": "2026-05-11T07:18:04.630765+00:00",
+    "last_viewed_at": "2026-05-11T07:18:04.627466+00:00",
+    "patch_count": 53,
     "pinned": false,
     "state": "active",
-    "use_count": 34,
-    "view_count": 35
+    "use_count": 36,
+    "view_count": 37
   },
   "refactor-inline-js-pola-lanjutan": {
     "archived_at": null,

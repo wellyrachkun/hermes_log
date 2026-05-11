@@ -1,0 +1,490 @@
+Query: work kanban task t_aceb4aea
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 📚 skill     joy-phone-design-system  0.1s
+  ┊ 📚 skill     frontend-ui-maintenance  0.1s
+  ┊ 📚 skill     rails-api-development  0.1s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/AGENTS.md  1.1s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/docs/ui_form_design_system.md  1.1s
+  ┊ 📚 skill     joy-phone-design-system  0.0s
+  ┊ 💻 $         git status --short --branch && git branch --show-current && git log --oneline -5  0.3s
+  ┊ 🔎 find      *.erb.tt  0.4s
+  ┊ 🔎 grep      form_section_card|form_input_with_label|form_combobox_with_label  0.7s
+  ┊ 🔎 grep      <input|<select|<textarea|button|form_for|form_with  0.7s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_form.html.erb.tt  0.8s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/index.html.erb.tt  0.7s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_list.html.erb.tt  0.9s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/edit.html.erb.tt  0.9s
+  ┊ 🔎 find      new.html.erb.tt  0.6s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/app/views/shared/_table_action_icons.html.erb  0.7s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/app/views/shared/_button.html.erb  0.5s
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/app/views/brands/_form.html.erb  0.5s
+  ┊ ✍️  write     /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_form.html.erb.tt  0.6s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_form.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_form.html.erb.tt
+@@ -14,12 +14,55 @@
+     <%%= render layout: "shared/form_section_card",
+                locals: {
+                  title: "Informasi <%= singular_table_name.humanize.titleize %>",
+-                 subtitle: "Lengkapi data utama <%= singular_table_name.humanize.downcase %> sesuai kebutuhan modul.",
++                 subtitle: "Lengkapi informasi utama dan deskripsi <%= singular_table_name.humanize.downcase %> agar mudah dikenali di backend.",
+                  icon: "document"
+                } do %>
+       <div class="space-y-4">
+-        <% attributes.each do |attribute| -%>
+-        <% if attribute.type == :boolean -%>
++        <% text_attributes = attributes.reject { |attribute| attribute.type == :boolean } -%>
++        <% if text_attributes.any? -%>
++        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
++          <% text_attributes.each do |attribute| -%>
++          <% if attribute.type == :text -%>
++        </div>
++        <%%= render partial: "shared/form_input_with_label",
++                   locals: {
++                     form_builder: form,
++                     field_name: :<%= attribute.name %>,
++                     field_type: :text_area,
++                     autocomplete_type: "<%= attribute.name %>",
++                     custom_label: "<%= attribute.human_name %>",
++                     placeholder: "Masukkan <%= attribute.human_name.downcase %>"
++                   } %>
++        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
++          <% else -%>
++          <%%= render partial: "shared/form_input_with_label",
++                     locals: {
++                       form_builder: form,
++                       field_name: :<%= attribute.name %>,
++                       field_type: :<%= attribute.type == :integer || attribute.type == :float || attribute.type == :decimal ? "number_field" : "text_field" %>,
++                       autocomplete_type: "<%= attribute.name %>",
++                       custom_label: "<%= attribute.human_name %>",
++                       placeholder: "Masukkan <%= attribute.human_name.downcase %>"
++                     } %>
++          <% end -%>
++          <% end -%>
++        </div>
++        <% else -%>
++        <p class="text-sm text-[var(--fg-muted)]">Tidak ada field informasi utama yang perlu diisi.</p>
++        <% end -%>
++      </div>
++    <%% end %>
++
++    <% boolean_attributes = attributes.select { |attribute| attribute.type == :boolean } -%>
++    <% if boolean_attributes.any? -%>
++    <%%= render layout: "shared/form_section_card",
++               locals: {
++                 title: "Pengaturan",
++                 subtitle: "Atur status dan pilihan aktif untuk <%= singular_table_name.humanize.downcase %> ini.",
++                 icon: "check"
++               } do %>
++      <div class="space-y-4">
++        <% boolean_attributes.each do |attribute| -%>
+         <div class="rounded-xl border border-[var(--border-1)] bg-[var(--bg-inset)] px-4 py-3">
+           <%%= render partial: "shared/form_switch",
+                      locals: {
+@@ -28,19 +71,10 @@
+                        label: "<%= attribute.human_name %>"
+                      } %>
+         </div>
+-        <% else -%>
+-        <%%= render partial: "shared/form_input_with_label",
+-                   locals: {
+-                     form_builder: form,
+-                     field_name: :<%= attribute.name %>,
+-                     field_type: :<%= attribute.type == :text ? "text_area" : (attribute.type == :integer || attribute.type == :float || attribute.type == :decimal ? "number_field" : "text_field") %>,
+-                     autocomplete_type: "<%= attribute.name %>",
+-                     custom_label: "<%= attribute.human_name %>"
+-                   } %>
+-        <% end -%>
+         <% end -%>
+       </div>
+     <%% end %>
++    <% end -%>
+   </div>
+ 
+… omitted 1 diff line(s) across 1 additional file(s)/section(s)
+  ┊ ✍️  write     /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_form.html.erb.tt  0.6s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_form.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_form.html.erb.tt
+@@ -20,33 +20,17 @@
+       <div class="space-y-4">
+         <% text_attributes = attributes.reject { |attribute| attribute.type == :boolean } -%>
+         <% if text_attributes.any? -%>
+-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+-          <% text_attributes.each do |attribute| -%>
+-          <% if attribute.type == :text -%>
+-        </div>
++        <% text_attributes.each do |attribute| -%>
+         <%%= render partial: "shared/form_input_with_label",
+                    locals: {
+                      form_builder: form,
+                      field_name: :<%= attribute.name %>,
+-                     field_type: :text_area,
++                     field_type: :<%= attribute.type == :text ? "text_area" : (attribute.type == :integer || attribute.type == :float || attribute.type == :decimal ? "number_field" : "text_field") %>,
+                      autocomplete_type: "<%= attribute.name %>",
+                      custom_label: "<%= attribute.human_name %>",
+                      placeholder: "Masukkan <%= attribute.human_name.downcase %>"
+                    } %>
+-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+-          <% else -%>
+-          <%%= render partial: "shared/form_input_with_label",
+-                     locals: {
+-                       form_builder: form,
+-                       field_name: :<%= attribute.name %>,
+-                       field_type: :<%= attribute.type == :integer || attribute.type == :float || attribute.type == :decimal ? "number_field" : "text_field" %>,
+-                       autocomplete_type: "<%= attribute.name %>",
+-                       custom_label: "<%= attribute.human_name %>",
+-                       placeholder: "Masukkan <%= attribute.human_name.downcase %>"
+-                     } %>
+-          <% end -%>
+-          <% end -%>
+-        </div>
++        <% end -%>
+         <% else -%>
+         <p class="text-sm text-[var(--fg-muted)]">Tidak ada field informasi utama yang perlu diisi.</p>
+         <% end -%>
+  ┊ ✍️  write     /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/new.html.erb.tt  0.6s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/new.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/new.html.erb.tt
+@@ -0,0 +1,14 @@
++<%% content_for :title, "New <%= singular_table_name.humanize.downcase %>" %>
++
++<div class="md:w-2/3 w-full">
++  <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
++    <div>
++      <h1 class="font-bold text-4xl">New <%= singular_table_name.humanize.downcase %></h1>
++      <p class="mt-1 text-sm text-[var(--fg-muted)]">Lengkapi informasi utama dan pengaturan <%= singular_table_name.humanize.downcase %>.</p>
++    </div>
++
++    <%%= render "shared/back_button", path: <%= index_helper %>_path, label: "Back to <%= plural_table_name.humanize.downcase %>" %>
++  </div>
++
++  <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
++</div>
+  ┊ ✍️  write     /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/edit.html.erb.tt  0.6s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/edit.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/edit.html.erb.tt
+@@ -1,13 +1,14 @@
+ <%% content_for :title, "Editing <%= singular_table_name.humanize.downcase %>" %>
++
+ <div class="md:w-2/3 w-full">
+   <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+     <div>
+       <h1 class="font-bold text-4xl">Editing <%= singular_table_name.humanize.downcase %></h1>
++      <p class="mt-1 text-sm text-[var(--fg-muted)]">Perbarui informasi utama dan pengaturan <%= singular_table_name.humanize.downcase %>.</p>
+     </div>
+ 
+     <%%= render "shared/back_button", path: <%= index_helper %>_path, label: "Back to <%= plural_table_name.humanize.downcase %>" %>
+   </div>
+ 
+   <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+-  <%%= link_to "Show this <%= singular_table_name.humanize.downcase %>", @<%= singular_table_name %>, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+ </div>
+  ┊ ✍️  write     /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_list.html.erb.tt  0.6s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_list.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/_list.html.erb.tt
+@@ -7,55 +7,15 @@
+         </td>
+       <% end -%>
+ 
+-      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 overflow-visible">
+-        <!-- Actions dropdown -->
+-        <div class="inline-block text-left relative" data-controller="dropdown">
+-          <button 
+-            type="button" 
+-            class="-m-2.5 p-2.5 rounded-md hover:bg-gray-100 transition-colors"
+-            <span class="sr-only">Open Action</span>
+-            <!-- three dots icon -->
+-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+-            </svg>
+-          </button>
+-
+-          <!-- Menu -->
+-          <div data-dropdown-target="menu" class="z-10 hidden origin-top-right absolute right-0 mt-2 w-30 rounded-md shadow-lg bg-white ring-1 ring-indigo-500 ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
+-            <div class="py-1" role="none">
+-                <%% if can? :read, <%= singular_table_name %> %>
+-                    <%%= link_to <%= singular_table_name %>, data: { turbo_frame: "_top", <%= singular_table_name %>_actions_dropdown_target: "showLink" }, class: "flex items-center gap-2 text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" do %>
+-                    <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+-                    </svg>
+-                    <span class="text-green-600">Show</span>
+-                    <%% end %>
+-                <%% end %>
+-
+-                <%% if can? :update, <%= singular_table_name %> %>
+-                    <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), data: { turbo_frame: "_top", <%= singular_table_name %>_actions_dropdown_target: "editLink" }, class: "flex items-center gap-2 text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" do %>
+-                    <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+-                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+-                    </svg>
+-                    <span class="text-indigo-600">Edit</span>
+-                    <%% end %>
+-                <%% end %>
+-            </div>
+-
+-            <div class="py-1" role="none">
+-                <%% if can? :destroy, <%= singular_table_name %> %>
+-                    <%%= link_to <%= singular_table_name %>, data: { turbo_frame: "_top", turbo_method: :delete, turbo_confirm: "Are you sure?", <%= singular_table_name %>_actions_dropdown_target: "destroyLink" }, class: "flex items-center gap-2 text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" do %>
+-                    <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+-                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+-                    </svg>
+-                    <span class="text-red-600">Destroy</span>
+-                    <%% end %>
+-                <%% end %>
+-            </div>
+-
+-          </div>
+-        </div>
++      <td class="whitespace-nowrap px-3 py-3 text-right text-sm font-medium">
++        <%%= render "shared/table_action_icons",
++                   show_path: <%= singular_table_name %>,
++                   edit_path: edit_<%= singular_table_name %>_path(<%= singular_table_name %>),
++                   destroy_path: <%= singular_table_name %>,
++                   show_allowed: can?(:read, <%= singular_table_name %>),
++                   edit_allowed: can?(:update, <%= singular_table_name %>),
++                   destroy_allowed: can?(:destroy, <%= singular_table_name %>),
++                   destroy_confirm: "Are you sure?" %>
+       </td>
+     </tr>
+   <% end %>
+  ┊ 🔎 grep      jp-table|jp-table-card|jp-table-actions  0.4s
+  ┊ 🔎 grep      render "shared/table_action_icons"  0.4s
+  ┊ ✍️  write     /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/index.html.erb.tt  0.6s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/index.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/index.html.erb.tt
+@@ -1,61 +1,78 @@
+ <div class="w-full">
+   <%= render partial: "shared/flash" %>
+-  <div class="flex justify-between items-center mb-6">
+-    <h1 class="font-bold text-4xl"><%= plural_table_name.titleize %></h1>
++
++  <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+     <div>
+-      <%%= link_to "New <%= singular_table_name.titleize.downcase %>", new_<%= singular_table_name %>_path, class: "rounded-md px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs shadow-sm" %>
++      <h1 class="font-bold text-4xl"><%= plural_table_name.titleize %></h1>
++      <p class="mt-1 text-sm text-[var(--fg-muted)]">Kelola data <%= plural_table_name.humanize.downcase %> di backend Joyphone.</p>
+     </div>
++
++    <%%= link_to "New <%= singular_table_name.titleize.downcase %>",
++                new_<%= singular_table_name %>_path,
++                class: "jp-btn jp-btn-primary inline-flex w-full items-center justify-center px-4 py-2 text-sm sm:w-auto" %>
+   </div>
+ 
+-  <!-- Search and Sort Section -->
+-  <div class="flex items-center gap-x-4 mb-3" data-controller="advanced-search">
+-    <%%= form_with url: <%= plural_table_name %>_path, method: :get, class: "w-full", data: { turbo_frame: "<%= plural_table_name %>", controller: "search", search_target: "form" } do |form| %>
++  <div class="mb-4" data-controller="advanced-search">
++    <%%= form_with url: <%= plural_table_name %>_path,
++                  method: :get,
++                  class: "w-full",
++                  data: { turbo_frame: "<%= plural_table_name %>", controller: "search", search_target: "form" } do |form| %>
+       <div class="flex items-center">
+-        <!-- Search box -->
+         <div class="relative flex-1">
+-          <%%= form.text_field :query, placeholder: "Search <%= plural_table_name.titleize.downcase %>...", aria: { label: "Search <%= plural_table_name.titleize.downcase %>" }, 
+-          class: "bg-white border border-e-0 border-gray-300 focus:ring-1 focus:ring-indigo-500 focus:outline-none pl-9 placeholder-gray-500 pr-3 py-2 rounded-s text-sm w-full", data: { action: "input->search#onInputChange" } %>
+-          <!-- magnifying glass icon -->
+-          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400">
++          <%%= form.text_field :query,
++                              placeholder: "Search <%= plural_table_name.titleize.downcase %>...",
++                              aria: { label: "Search <%= plural_table_name.titleize.downcase %>" },
++                              class: "w-full rounded-l-xl border border-r-0 border-[var(--border-1)] bg-[var(--bg-1)] py-2 pl-9 pr-3 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-muted)] focus:border-[var(--border-focus)] focus:outline-none focus:ring-1 focus:ring-[var(--border-focus)]",
++                              data: { action: "input->search#onInputChange" } %>
++          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--fg-muted)]">
+             <path d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" fill-rule="evenodd"/>
+           </svg>
+         </div>
+-        <!-- Sort button -->
+-        <button type="button" class="inline-flex items-center rounded-e border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:z-10" data-action="click->advanced-search#open">
+-          <!-- filter icon -->
++
++        <button type="button" class="inline-flex items-center rounded-r-xl border border-[var(--border-1)] bg-[var(--bg-1)] px-3 py-2 text-sm font-medium text-[var(--fg-2)] shadow-sm hover:bg-[var(--bg-2)] focus:outline-none focus:ring-1 focus:ring-[var(--border-focus)]" data-action="click->advanced-search#open">
+           <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+           </svg>
+-          &nbsp;
++          <span class="sr-only">Open advanced search</span>
+         </button>
+       </div>
+ 
+-      <!-- Advanced Search Modal -->
+-      <div class="fixed inset-0 z-50 overflow-y-auto bg-gray-900/50 hidden" data-advanced-search-target="overlay" data-action="click->advanced-search#close">
++      <div class="fixed inset-0 z-50 hidden overflow-y-auto bg-gray-900/50" data-advanced-search-target="overlay" data-action="click->advanced-search#close">
+         <div class="flex min-h-full items-center justify-center p-4 text-center">
+-          <div class="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all" data-advanced-search-target="content" data-action="click->advanced-search#stopPropagation">
+-            <div class="flex justify-between items-center mb-4">
+-              <h3 class="text-xl font-bold leading-6 text-gray-900">Advanced Search</h3>
+-              <button class="text-gray-400 hover:text-gray-600" data-action="click->advanced-search#close">
++          <div class="w-full max-w-lg transform overflow-hidden rounded-2xl border border-[var(--border-1)] bg-[var(--bg-1)] p-6 text-left align-middle shadow-xl transition-all" data-advanced-search-target="content" data-action="click->advanced-search#stopPropagation">
++            <div class="mb-4 flex items-center justify-between">
++              <div>
++                <h3 class="text-xl font-bold leading-6 text-[var(--fg-1)]">Advanced Search</h3>
++                <p class="mt-1 text-sm text-[var(--fg-muted)]">Filter data <%= plural_table_name.humanize.downcase %> berdasarkan field yang tersedia.</p>
++              </div>
++              <button type="button" class="jp-icon-button" data-action="click->advanced-search#close">
+                 <span class="sr-only">Close</span>
+-                <!-- x icon -->
+-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
++                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                 </svg>
+               </button>
+             </div>
+-            
+… omitted 135 diff line(s) across 1 additional file(s)/section(s)
+  ┊ 📖 read      /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/show.html.erb.tt  0.9s
+  ┊ ✍️  write     /root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/show.html.erb.tt  0.6s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/show.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/show.html.erb.tt
+@@ -1,45 +1,45 @@
+ <%% content_for :title, "Showing <%= singular_table_name.titleize %>" %>
+ 
+ <div class="max-w-3xl mx-auto">
+-  <%% if notice.present? %>
+-    <div id="notice" class="mb-6 rounded-lg bg-green-50 px-4 py-3 text-green-700">
+-      <%%= notice %>
+-    </div>
+-  <%% end %>
++  <%= render partial: "shared/flash" %>
+ 
+-  <!-- Card -->
+-  <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+-    <!-- Header -->
+-    <div class="border-b border-gray-200 px-6 py-4">
+-      <h1 class="text-2xl font-semibold text-gray-900">
++  <div class="overflow-hidden rounded-2xl border border-[var(--border-1)] bg-[var(--bg-1)] shadow-sm">
++    <div class="border-b border-[var(--border-1)] px-6 py-4">
++      <h1 class="text-2xl font-semibold text-[var(--fg-1)]">
+         <%%= @<%= singular_table_name %>.<%= attributes.first.name %> %>
+       </h1>
+-      <p class="mt-1 text-sm text-gray-500">ID: <%%= @<%= singular_table_name %>.id %></p>
++      <p class="jp-code mt-1">ID: <%%= @<%= singular_table_name %>.id %></p>
+     </div>
+ 
+-    <!-- Body -->
+-    <div class="px-6 py-4 space-y-4">
++    <div class="space-y-4 px-6 py-4">
+       <%- attributes.each do |attribute| -%>
+-        <div>
+-          <h2 class="text-sm font-medium text-gray-500"><%= attribute.human_name %></h2>
+-          <p class="mt-1 text-gray-700"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></p>
+-        </div>
++      <div>
++        <h2 class="text-sm font-medium text-[var(--fg-muted)]"><%= attribute.human_name %></h2>
++        <p class="mt-1 text-[var(--fg-2)]"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></p>
++      </div>
+       <%- end -%>
+     </div>
+ 
+-    <!-- Footer -->
+-    <div class="flex flex-col sm:flex-row justify-end gap-2 border-t border-gray-200 px-6 py-4 bg-gray-50">
+-      <%%= link_to "Back", <%= index_helper %>_path,
+-          class: "rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100" %>
++    <div class="flex flex-col justify-end gap-2 border-t border-[var(--border-1)] bg-[var(--bg-2)] px-6 py-4 sm:flex-row">
++      <%%= render partial: "shared/button",
++                 locals: {
++                   text: "Back",
++                   color: "secondary",
++                   link_path: <%= index_helper %>_path
++                 } %>
+ 
+-      <%%= link_to "Edit", edit_<%= singular_table_name %>_path(@<%= singular_table_name %>),
+-          class: "rounded-lg border border-indigo-600 bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500" %>
++      <%%= render partial: "shared/button",
++                 locals: {
++                   text: "Edit",
++                   color: "primary",
++                   link_path: edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)
++                 } %>
+ 
+       <%%= button_to "Delete", @<%= singular_table_name %>,
+-          method: :delete,
+-          form: { class: "inline" },
+-          data: { turbo_confirm: "Are you sure?" },
+-          class: "rounded-lg border border-red-600 bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-500" %>
++                    method: :delete,
++                    form: { class: "inline" },
++                    data: { turbo_confirm: "Are you sure?" },
++                    class: "jp-btn jp-btn-danger inline-flex w-full items-center justify-center px-4 py-2 text-sm" %>
+     </div>
+   </div>
+-</div>+</div>
+  ┊ 💻 $         ruby -rerb -e 'ARGV.each { |f| ERB.new(File.read(f), trim_mode: "-").src; puts "ERB OK #{f}" }' lib/templates/erb/scaffold/*.erb.tt && git diff --check  0.3s
+  ┊ 💻 $         bin/rails generate scaffold UiTemplateProbe name:string description:text active:boolean --pretend  2.5s
+  ┊ 💻 $         git status --short && git diff -- lib/templates/erb/scaffold  0.3s
+  ┊ 💻 $         set -e
+bin/rails generate scaffold UiTemplateProbe name:string description:text active:boolean --skip-test-framework --skip-jbuilder
+bin/rails destroy scaffold UiTemplateProbe --skip-test-framework --skip-jbuilder
+# remove any leftovers if destroy missed them
+rm -f db/migrate/*_create_ui_template_probes.rb
+rm -rf app/views/ui_template_probes app/controllers/ui_template_probes_controller.rb app/models/ui_template_probe.rb app/helpers/ui_template_probes_helper.rb
+# ensure route removed; destroy should handle it
+git diff --check  4.0s [error]
+  ┊ 💻 $         bin/rails destroy scaffold UiTemplateProbe --skip-test-framework --skip-jbuilder || true
+rm -f db/migrate/*_create_ui_template_probes.rb
+rm -rf app/views/ui_template_probes app/controllers/ui_template_probes_controller.rb app/models/ui_template_probe.rb app/helpers/ui_template_probes_helper.rb
+git status --short  1.5s
+  ┊ 🔎 grep      <%= render|<%= link_to|<%= button_to|<%= form_with|<%= form\.  0.4s
+  ┊ 🔧 patch       3.8s
+  ┊ review diff
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/index.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/index.html.erb.tt
+@@ -1,5 +1,5 @@
+ <div class="w-full">
+-  <%= render partial: "shared/flash" %>
++  <%%= render partial: "shared/flash" %>
+ 
+   <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+     <div>
+a//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/show.html.erb.tt → b//root/projects/freelance/joy_phone/web_semicomerce/lib/templates/erb/scaffold/show.html.erb.tt
+@@ -1,7 +1,7 @@
+ <%% content_for :title, "Showing <%= singular_table_name.titleize %>" %>
+ 
+ <div class="max-w-3xl mx-auto">
+-  <%= render partial: "shared/flash" %>
++  <%%= render partial: "shared/flash" %>
+ 
+   <div class="overflow-hidden rounded-2xl border border-[var(--border-1)] bg-[var(--bg-1)] shadow-sm">
+     <div class="border-b border-[var(--border-1)] px-6 py-4">
+  ┊ 💻 $         set +e
+bin/rails generate scaffold UiTemplateProbe name:string description:text active:boolean --skip-test-framework --skip-jbuilder
+status=$?
+if [ $status -eq 0 ]; then
+  ruby -rerb -e 'Dir["app/views/ui_template_probes/*.erb"].each { |f| ERB.new(File.read(f), trim_mode: "-").src; puts "generated ERB OK #{f}" }'
+fi
+bin/rails destroy scaffold UiTemplateProbe --skip-test-framework --skip-jbuilder >/tmp/ui_template_probe_destroy.log 2>&1 || true
+rm -f db/migrate/*_create_ui_template_probes.rb
+rm -rf app/views/ui_template_probes app/controllers/ui_template_probes_controller.rb app/models/ui_template_probe.rb app/helpers/ui_template_probes_helper.rb
+cat /tmp/ui_template_probe_destroy.log
+exit $status  2.7s
+  ┊ 💻 $         git status --short && git diff --check && ruby -rerb -e 'ARGV.each { |f| ERB.new(File.read(f), trim_mode: "-").src; puts "ERB OK #{f}" }' lib/templates/erb/scaffold/*.erb.tt  0.3s
+  ┊ 🔎 grep      <%= render|<%= link_to|<%= button_to|<%= form_with|<%= form\.|bg-indigo|dropdown|tabs-lift|product_tab  0.4s
+  ┊ 💻 $         git diff --stat && git diff --name-only  0.3s
+  ┊ 💻 $         git status --short --untracked-files=all  0.3s
+  ┊ ⚡ kanban_co   0.0s
+  ┊ ⚡ kanban_bl   0.0s
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Task t_aceb4aea sudah dikerjakan dan saya block sebagai                    
+     review-required.                                                           
+                                                                                
+     Ringkas:                                                                   
+     - Scaffold form template sekarang pakai shared/form_section_card           
+     dengan card “Informasi …” + subtitle informasi/deskripsi.                  
+     - Boolean field dipisah ke card “Pengaturan” pakai shared/form_switch.     
+     - Tambah new.html.erb.tt.                                                  
+     - Index/list scaffold actions diganti ke shared/table_action_icons,        
+     bukan dropdown.                                                            
+     - Index/show pakai token JoyPhone dan ERB escape sudah dibetulkan.         
+                                                                                
+     Verifikasi:                                                                
+     - ERB template parse OK.                                                   
+     - rails generate scaffold UiTemplateProbe ... berhasil.                    
+     - Generated ERB parse OK.                                                  
+     - Scaffold dummy sudah dihancurkan/cleanup.                                
+     - git diff --check OK.                                                     
+                                                                                
+     Butuh review sebelum task dianggap complete.                               
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 

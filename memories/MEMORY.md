@@ -4,7 +4,7 @@ Work projects use mise Ruby 2.5.9, Bundler 1.17.3, ffi '< 1.17.0'. SVN: username
 - ~/projects/works/main — Erzap POS/inventory ERP Rails 4.2.11.3. Port 3000, login /session/new. Gemfile.lock+db/schema.rb NEVER commit. Commit only specific files. JS controllers (produk_manufakturs.js, tukar_sns.js) are UNVERSIONED — no SVN backup, restore via VS Code Timeline if corrupt.
 - ~/projects/works/erzap_web — company website, same stack.
 §
-Hermes Workspace: /root/hermes-workspace, cron */5 ensure-hermes-workspace.sh manages tmux:hermes-workspace (:3333) + hermes-dashboard (:9119). Gateway 127.0.0.1:8642. Nginx hermes.rachkun.dev→3333. Critical: tmux doesn't inherit env — PORT must be inlined. Workspace has own Kanban board (separate from hermes kanban CLI). Specialist profiles: default (deepseek-v4-pro), backend-eng (clone of default).
+Hermes Workspace v2.3.0: /root/hermes-workspace, cron */5 ensure-hermes-workspace.sh manages tmux:hermes-workspace (:3333) + hermes-dashboard (:9119). Nginx hermes.rachkun.dev→3333 (no basic auth). Env required: PORT, HERMES_WORKSPACE_DIR=/root/projects (/root blocked), CLAUDE_KANBAN_BACKEND=claude. Task board unified with Hermes Kanban (sqlite3 CLI reads ~/.hermes/kanban.db). Done tasks hidden unless include_done=true. Auth: password-only via HERMES_PASSWORD. Profiles: default (deepseek-v4-pro), backend-eng.
 §
 OpenCode: opencode.rachkun.dev, backend 127.0.0.1:32123 (tmux opencode-web). cron */5 ensure-opencode-web.sh, logs /var/log/opencode/. Pass: !123AdminHermes. Healthcheck 401=ok. pkill "opencode serve" kills parent (-15).
 §

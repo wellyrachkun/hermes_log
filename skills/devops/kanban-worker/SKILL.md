@@ -125,6 +125,8 @@ If you open the task and `kanban_show` returns `runs: [...]` with one or more cl
 
 **Don't rely on the CLI when the guidance is available.** The `kanban_*` tools work across all terminal backends (Docker, Modal, SSH). `hermes kanban <verb>` from your terminal tool will fail in containerized backends because the CLI isn't installed there. When in doubt, use the tool.
 
+**Invalid task status = dispatcher ignores it.** The dispatcher only promotes `todo → ready` and spawns `ready` tasks. If a task has an unrecognised status (e.g. `queued` — not in the valid set `triage|todo|ready|running|blocked|done|archived`), it will sit unprocessed forever. Diagnose with `hermes kanban stats` (shows per-status counts — if a status appears that isn't in the standard breakdown, it's invalid) and `hermes kanban list --json`. Fix by updating the status directly: `sqlite3 ~/.hermes/kanban.db "UPDATE tasks SET status = 'ready' WHERE id = '<task_id>'"` then run `hermes kanban dispatch`. Full diagnostic recipe: `references/invalid-status-diagnosis.md`.
+
 ## CLI fallback (for scripting)
 
 Every tool has a CLI equivalent for human operators and scripts:

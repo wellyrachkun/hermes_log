@@ -1,0 +1,34 @@
+{
+  "runId": "5aba6d9c-25c0-460c-acf2-031f6d0085cc",
+  "sessionKey": "7a65cd03-ccba-43f4-b75c-04946999f82e",
+  "friendlyId": "7a65cd03-ccba-43f4-b75c-04946999f82e",
+  "status": "active",
+  "createdAt": 1778486165297,
+  "updatedAt": 1778486209137,
+  "lastEventAt": 1778486209137,
+  "assistantText": "\n\nSingkatnya: akses token",
+  "thinkingText": "",
+  "toolCalls": [
+    {
+      "id": "call_00_iaAVwQ1qEcurixPdX7Md0861",
+      "name": "read_file",
+      "phase": "complete",
+      "preview": "read_file"
+    },
+    {
+      "id": "call_00_HNiM7WhEmQpNQYEWAFGv7098",
+      "name": "search_files",
+      "phase": "complete",
+      "preview": "search_files"
+    },
+    {
+      "id": "call_00_rpCj3Hj4Mt4QdlafOoGq2441",
+      "name": "read_file",
+      "phase": "complete",
+      "preview": "read_file"
+    }
+  ],
+  "lifecycleEvents": []
+}
+
+}

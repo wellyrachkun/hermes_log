@@ -191,6 +191,45 @@ google.accounts.id.initialize({
 })
 ```
 
+### Variant: OAuth 2.0 Token Endpoint Response (server-side flow)
+
+If the frontend uses the **authorization code flow** (GIS `response.code` → server exchanges at `https://oauth2.googleapis.com/token`), the token endpoint returns a JSON object with both tokens:
+
+```json
+{
+  "token_type": "Bearer",
+  "access_token": "ya29.a0...",
+  "scope": "email profile openid ...",
+  "expires_in": 3599,
+  "id_token": "eyJhbGciOiJSUzI1NiIs...",
+  "session_state": { "extraQueryParams": { "authuser": "0" } }
+}
+```
+
+In this flow, the GIS callback gives you `response.code` (NOT `response.credential`). You exchange `response.code` server-side for tokens, then extract `id_token` from the response and forward it to the backend:
+
+```javascript
+// Token exchange happens server-side — then forward to backend API
+const tokenResponse = await fetch("https://oauth2.googleapis.com/token", { ... })
+const data = await tokenResponse.json()
+
+// ✅ Extract id_token from OAuth token response and send as credential
+fetch("/api/v1/oauth/google", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ credential: data.id_token })
+})
+
+// ❌ DON'T send data.access_token — it's an OAuth API token, not an identity JWT
+// ❌ DON'T send the whole JSON object — backend expects just the ID token string
+```
+
+**Key distinction:**
+| Flow | GIS callback gives | What to send as `credential` param |
+|------|-------------------|-------------------------------------|
+| Implicit (popup) | `response.credential` (ID token JWT string) | `response.credential` directly |
+| Authorization code | `response.code` (one-time code) | Exchanged server-side → use `id_token` from token response |
+
 ### Other causes
 
 | Log message | Cause | Fix |
