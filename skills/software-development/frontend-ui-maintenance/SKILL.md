@@ -191,7 +191,9 @@ When adding a new numeric input or encountering balance/amount precision bugs, a
 
 14. **Serving full-resolution images for thumbnail displays.** A logo at 4566px wide displayed at 150px wastes 30× bandwidth. Social icons at 900px rendered at 20px. Always check `browser_get_images` intrinsic `width`/`height` against CSS display size. HEAD-request the `Content-Length` to quantify the damage. See `references/web-performance-image-audit.md` for the full audit workflow.
 
-15. **Active Storage redirect URLs for every image.** Rails `/rails/active_storage/blobs/redirect/...` adds a 302 round-trip per unique image (Rails → DB → redirect → file). On pages with 10+ Active Storage images, this alone adds 2–3 seconds of latency. Prefer `service_url` with `public: true` and a CDN, or use `variant()` to serve optimized sizes.
+16. **Commit+push without redeploying Kamal app.** For repos that deploy via Kamal (e.g. finance_couple), commit+push ≠ live. After `git push`, run `kamal deploy` then verify the feature string exists in the served JS bundle: `ASSET=$(curl -sS https://<domain>/ | grep -oP 'assets/index-[^"]+\.js') && curl -sS "https://<domain>/$ASSET" | grep -o 'FeatureString'`. A healthy 200 on the domain is not enough — the container may still be running an old commit. Use the Deployment Freshness Audit from the `kamal-deployment` skill to confirm the running image tag matches HEAD.
+
+17. **Assuming a feature is live because build passed.** `npm run build` passing only proves the code compiles. If the app is Kamal-deployed with committed `dist/`, the sequence is: edit → build → `git add` source+dist → commit → push → `kamal deploy` → verify production JS.
 
 ## React Data-Loading States (Supabase / API-Backed Hooks)
 
@@ -336,4 +338,5 @@ See `references/finance-couple-slow-loading.md` for the full investigation trans
 - [ ] **No duplicate `useTransactions()` (or similar) calls in the same render tree — lift state up or use context.**
 - [ ] TypeScript/Vite build or project-specific verification succeeds.
 - [ ] Diff/status reviewed, including generated assets if tracked.
+- [ ] **If Kamal-deployed: `kamal deploy` → verify feature string in production JS bundle.** (Pitfall #16)
 - [ ] Final response is concise and states files changed + verification result.

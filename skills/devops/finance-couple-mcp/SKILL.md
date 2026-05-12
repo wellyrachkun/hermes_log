@@ -164,6 +164,7 @@ ps aux | grep "hermes-mcp-servers/finance_couple" | grep -v grep
 | `list_transactions` | Read | Filtered transaction list |
 | `get_recent_transactions` | Read | Shortcut for latest N transactions |
 | `delete_transaction` | CRUD | Delete + revert wallet balance |
+| `cancel_transaction` | CRUD | Cancel transaction within 1 hour + revert balance |
 | `list_wallets` | Read | All wallets with balances and details |
 | `add_wallet` | CRUD | Create wallet |
 | `update_wallet` | CRUD | Update wallet name/icon/color |

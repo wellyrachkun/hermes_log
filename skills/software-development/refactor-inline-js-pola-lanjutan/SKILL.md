@@ -204,3 +204,15 @@ Panggil dari `initForm()`: `this.initWorkOrderModal();` — guard `.length === 0
 - **Substring matching saat bulk rename** — fungsi dengan nama pendek akan ketelan di nama panjang (misal `tambah_baris_hasil` match di dalam `auto_tambah_baris_hasil` → jadi `auto_JSController.ctrl.tambah_baris_hasil`). Sort by length descending, lakukan semua replacement dalam SATU atomic pass, jangan multi-script. Setelah selesai, grep untuk `JSController.ctrl.JSController` (double prefix) dan pattern `\w+_JSController.ctrl.\w+` (substring corruption).
 - **Selalu syntax-check setelah refactor** — `node --check file.js` sebelum declare selesai. Missing comma antar method, unmatched braces, dan broken method boundaries adalah bug umum hasil extraction script.
 - **Kalau file corrupt, jangan iterasi repair** — setiap pass repair berisiko tambah corrupt. Lebih baik restore dari backup (VS Code Timeline/Local History) dan ulangi dengan script yang sudah verified.
+- **Global `var` leakage pasca refactor** — beberapa controller besar seperti `grup_outlets.js` (1299 baris) masih punya fungsi di top-level (`var dateFormat = ...`, `var check_tgl_ed_label_designer_state = function() {...}`) di LUAR object `JSController.grup_outlets`. Ini mencemari `window` dan menyulitkan konversi ke Stimulus nanti. Setelah refactor, grep file untuk `^var ` atau `^function ` di luar object — semua harus masuk sebagai method di dalam `JSController.<ctrl> = { ... }`.
+- **`app_logic.js` masih monolith 9645 baris** — file ini bukan cuma dispatcher (61 baris atas), tapi seluruh `init_erzap()` dan fungsi global. Sebelum konversi ke Rails 8, fungsi-fungsi yang spesifik ke modul tertentu harus dipindah ke controller masing-masing. Dispatcher + `AutocompleteDispatcher` + `apiFetch` tetap di vendor karena dipakai lintas modul.
+
+## Rails 8 Stimulus Migration Bridge
+
+Refactor JSController yang sedang berjalan adalah batu loncatan ke Rails 8. Pola `JSController.<modul>` + `AppDispatcher` (dispatch via `data-controller`/`data-action` pada `<body>`) sangat dekat dengan Stimulus — konversi modul yang sudah bersih (zero inline JS, zero global var) bisa dilakukan dalam hitungan menit.
+
+Lihat [references/rails8-stimulus-migration.md](references/rails8-stimulus-migration.md) untuk:
+- Tabel perbandingan fitur JSController vs Stimulus
+- Strategi 3-fase: cleanup → bridge adapter → full Stimulus
+- Contoh konversi konkret (`kabupatens.js` 47 baris → Stimulus)
+- Risiko dan anti-pattern yang harus dihindari

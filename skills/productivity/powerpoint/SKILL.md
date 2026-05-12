@@ -18,6 +18,7 @@ Use this skill any time a .pptx file is involved in any way — as input, output
 | Read/analyze content | `python -m markitdown presentation.pptx` |
 | Edit or create from template | Read [editing.md](editing.md) |
 | Create from scratch | Read [pptxgenjs.md](pptxgenjs.md) |
+| Tech strategy deck template | See `templates/tech-strategy-deck.js` — reusable patterns for proposal/migration/architecture decks |
 
 ---
 
@@ -84,6 +85,8 @@ Choose colors that match your topic — don't default to generic blue. Use these
 ### For Each Slide
 
 **Every slide needs a visual element** — image, chart, icon, or shape. Text-only slides are forgettable.
+
+**Generating slide illustrations:** Use the `image_generate` tool (Hermes built-in) to create custom AI images for slides — hero images, concept illustrations, background visuals. Generates via FAL.ai (FLUX models); landscape aspect ratios work best for slide backgrounds. Requires `FAL_KEY` in `~/.hermes/.env` (free tier available at fal.ai).
 
 **Layout options:**
 - Two-column (text left, illustration on right)

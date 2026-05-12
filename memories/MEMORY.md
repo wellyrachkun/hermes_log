@@ -9,3 +9,5 @@ Hermes Workspace v2.3.0: /root/hermes-workspace, cron */5 ensure-hermes-workspac
 OpenCode: opencode.rachkun.dev, backend 127.0.0.1:32123 (tmux opencode-web). cron */5 ensure-opencode-web.sh, logs /var/log/opencode/. Pass: !123AdminHermes. Healthcheck 401=ok. pkill "opencode serve" kills parent (-15).
 §
 Finance couple MCP server sudah aktif — tools tersedia dengan prefix `mcp_finance_*`: add_transaction, list_transactions, delete_transaction, list_wallets, add_wallet, update_wallet, list_categories, add_category, delete_category, get_summary, get_balance_sheet. DB: cozyfinance via PostgreSQL container infra-db-1. Langsung pakai tanpa perlu setup ulang.
+§
+Image generation (image_generate tool) belum bisa dipakai — FAL_KEY belum diset di env file Hermes. Perlu daftar di fal.ai (free tier), ambil API key, lalu tambahkan ke env.

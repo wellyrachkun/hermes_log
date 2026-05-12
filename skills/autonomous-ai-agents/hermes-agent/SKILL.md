@@ -399,7 +399,7 @@ Enable/disable via `hermes tools` (interactive) or `hermes tools enable/disable 
 | `file` | File read/write/search/patch |
 | `code_execution` | Sandboxed Python execution |
 | `vision` | Image analysis |
-| `image_gen` | AI image generation |
+| `image_gen` | AI image generation — requires `FAL_KEY` in `.env`; see [references/image-generation-setup.md](references/image-generation-setup.md) for all providers, models, and pricing |
 | `tts` | Text-to-speech |
 | `skills` | Skill browsing and management |
 | `memory` | Persistent cross-session memory |
@@ -611,6 +611,23 @@ If Hermes Workspace shows "Welcome! Let's connect your backend" or `mode=disconn
 1. `hermes tools` — check if toolset is enabled for your platform
 2. Some tools need env vars (check `.env`)
 3. `/reset` after enabling tools
+
+### Image Generation (`image_gen`) Setup
+
+The `image_gen` toolset uses **FAL.ai** as its backend. It requires a FAL API key:
+
+```bash
+# 1. Sign up at https://fal.ai (free tier, no credit card)
+# 2. Get your API key from the dashboard
+# 3. Add to .env:
+echo 'FAL_KEY=fal-xxxxxxxxxxxxxxxx' >> ~/.hermes/.env
+```
+
+After setting the key, start a new session (`/reset` in chat, or relaunch `hermes`). The `image_generate` tool will appear automatically — no separate `hermes tools enable` needed if `image_gen` is already in your platform toolsets.
+
+Default model: **FLUX 2 Klein 9B** — fast (<1s), crisp text, $0.006/MP. Model can be changed via `hermes tools` → Image Generation.
+
+The tool won't appear (even with `image_gen` enabled) until `FAL_KEY` is set to a non-empty value.
 
 ### Model/provider issues
 1. `hermes doctor` — check config and dependencies
